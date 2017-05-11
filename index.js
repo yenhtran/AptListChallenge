@@ -19,15 +19,15 @@ var entireCompany = ['Happy', 'Dopey', 'Grumpy', 'Sneezy', 'Bashful', 'Sleepy', 
 
 function shuffle(array) {
     var shuffledNames = [],
-        num = entireCompany.length,
+        num = array.length,
         i;
 
     while (num) {
-        i = Math.floor(Math.random() * entireCompany.length);
+        i = Math.floor(Math.random() * array.length);
 
-        if (i in entireCompany) {
-            shuffledNames.push(entireCompany[i]);
-            delete entireCompany[i];
+        if (i in array) {
+            shuffledNames.push(array[i]);
+            delete array[i];
             num--;
         }
     }
@@ -49,6 +49,7 @@ function makeGroups(entireCompany) {
     //
 
     if (entireCompany.length < 3) return new Error(['not enough people']);
+    return shuffle(entireCompany);
 }
 
 console.log(makeGroups(entireCompany));
