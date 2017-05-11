@@ -14,7 +14,7 @@ console.log(
     )
 );
 
-var entireCompany = ['Happy', 'Dopey', 'Grumpy', 'Sneezy', 'Bashful', 'Sleepy', 'Doc', 'Snow', 'Super Woman', 'Batman'];
+var entireCompany = ['Happy', 'Dopey', 'Grumpy', 'Sneezy', 'Bashful', 'Sleepy', 'Doc', 'Snow', 'Super Woman', 'Batman', 'Superman', 'Thor', 'Loki'];
 
 
 function shuffle(array) {
@@ -46,7 +46,6 @@ function breakIntoChunks(names) {
 function makeGroups(entireCompany) {
     console.log('making groups!');
 
-    //Break the list of names into chunks of 4 people per group
     //Validate groups
     //	if last group size is less than 3
     //		take everyone in that last group and pop each one off...
@@ -57,7 +56,20 @@ function makeGroups(entireCompany) {
 
     if (entireCompany.length < 3) return new Error(['not enough people']);
     var shuffledList = shuffle(entireCompany);
-    return breakIntoChunks(shuffledList);
+    var groupedList = breakIntoChunks(shuffledList);
+
+    if (groupedList[groupedList.length-1].length <= 2) {
+
+    	var lastSubGroup = groupedList[groupedList.length-1];
+    	var newArray = [];
+
+    	for (var i = 0; i < lastSubGroup.length; i++) {
+    		groupedList[i].push(lastSubGroup[i]);
+    	}
+
+    	groupedList.splice(-1, 1);
+    	return groupedList;
+    }
 }
 
 console.log(makeGroups(entireCompany));
