@@ -37,8 +37,6 @@ function shuffle(array) {
 function makeGroups(entireCompany) {
     console.log('making groups!');
 
-    //If the length of the entireCompany is less than 3, return error
-    //Take array and shuffle the names
     //Break the list of names into chunks of 4 people per group
     //Validate groups
     //	if last group size is less than 3
@@ -49,7 +47,34 @@ function makeGroups(entireCompany) {
     //
 
     if (entireCompany.length < 3) return new Error(['not enough people']);
-    return shuffle(entireCompany);
+    var shuffledList = shuffle(entireCompany);
+
+    var newArray = [];
+
+    for (var i = 0; i < shuffledList.length; i +=4) {
+    	newArray.push(shuffledList.slice(i, i+4))
+    }
+    return newArray
 }
 
 console.log(makeGroups(entireCompany));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
