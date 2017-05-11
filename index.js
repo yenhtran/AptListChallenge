@@ -34,6 +34,15 @@ function shuffle(array) {
     return shuffledNames;
 }
 
+function breakIntoChunks(names) {
+    var newArray = [];
+
+    for (var i = 0; i < names.length; i += 4) {
+        newArray.push(names.slice(i, i + 4))
+    }
+    return newArray
+}
+
 function makeGroups(entireCompany) {
     console.log('making groups!');
 
@@ -48,33 +57,7 @@ function makeGroups(entireCompany) {
 
     if (entireCompany.length < 3) return new Error(['not enough people']);
     var shuffledList = shuffle(entireCompany);
-
-    var newArray = [];
-
-    for (var i = 0; i < shuffledList.length; i +=4) {
-    	newArray.push(shuffledList.slice(i, i+4))
-    }
-    return newArray
+    return breakIntoChunks(shuffledList);
 }
 
 console.log(makeGroups(entireCompany));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
