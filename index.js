@@ -17,14 +17,21 @@ console.log(
     )
 );
 
+var entireCompany = ['Happy', 'Dopey', 'Grumpy', 'Sneezy', 'Bashful', 'Sleepy', 'Doc', 'Snow', 'Super Woman', 'Batman', 'Superman', 'Thor', 'Loki'];
+
+
 process.stdin.on('data', function(data) {
 	fs.appendFile('data/input.txt', data, function(err) {
 		if (err) throw err;
 
 		readContent('input.txt', function(err, content) {
-			console.log('CONTENT: ', content);
-		});
+			var allEmployees = content.split('\n');
 
+			allEmployees.splice(-1, 1);
+
+			console.log(groupProcessor.makeGroups(allEmployees));
+		});
+		// process.exit()
 	});
 });
 
