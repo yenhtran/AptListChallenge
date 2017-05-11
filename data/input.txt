@@ -6,7 +6,3 @@ Bashful
 Sleepy
 Doc
 Snow
-Beauty
-Beast
-Ariel
-Jasmine

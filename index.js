@@ -17,20 +17,28 @@ console.log(
     )
 );
 
-var entireCompany = ['Happy', 'Dopey', 'Grumpy', 'Sneezy', 'Bashful', 'Sleepy', 'Doc', 'Snow', 'Super Woman', 'Batman', 'Superman', 'Thor', 'Loki'];
-
-
 process.stdin.on('data', function(data) {
 	fs.appendFile('data/input.txt', data, function(err) {
 		if (err) throw err;
-		process.exit()
+
+		readContent('input.txt', function(err, content) {
+			console.log('CONTENT: ', content);
+		});
+
 	});
 });
+
+
+function readContent(fileName, callback) {
+	fs.readFile('data/input.txt', 'utf8', function(err, content) {
+		if(err) return console.log(err);
+		callback(null, content);
+	});
+}
 
 function beginProgram(i) {
     process.stdout.write(`Please enter the name of your new friend!\n`);
     process.stdout.write("   >   ");
 }
 
-console.log(groupProcessor.makeGroups(entireCompany));
 beginProgram(0);
