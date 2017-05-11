@@ -64,10 +64,14 @@ function makeGroups(entireCompany) {
     	var newArray = [];
 
     	for (var i = 0; i < lastSubGroup.length; i++) {
-    		groupedList[i].push(lastSubGroup[i]);
-    	}
 
+    		if (groupedList[i].length <= 4) {
+    			groupedList[i].push(lastSubGroup[i]);
+    		}
+    	}
     	groupedList.splice(-1, 1);
+    	return groupedList;
+    } else {
     	return groupedList;
     }
 }
