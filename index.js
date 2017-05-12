@@ -29,11 +29,22 @@ process.stdin.on('data', function(data) {
 
 			allEmployees.splice(-1, 1);
 
-			console.log(groupProcessor.makeGroups(allEmployees));
+			var groups = groupProcessor.makeGroups(allEmployees);
+
+			groups.forEach(function(group, index){
+				process.stdout.write(`Group ${index + 1}` + '\n');
+				process.stdout.write(`=====\n`);
+				group.forEach(function(name) {
+					process.stdout.write(`${name}` + '\n');
+				});
+				process.stdout.write(`\n`);
+			});
+
 		});
 		// process.exit()
 	});
 });
+
 
 
 function readContent(fileName, callback) {
