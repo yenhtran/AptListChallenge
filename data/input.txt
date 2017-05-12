@@ -3,6 +3,6 @@ Dopey
 Grumpy
 Sneezy
 Bashful
-Sleepy
-Doc
-Snow
+Bambi
+Larry
+Sarah

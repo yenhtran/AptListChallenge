@@ -21,16 +21,27 @@ console.log(
     Logic to interpret the response from the terminal
 */
 process.stdin.on('data', function(data) {
-    fs.appendFile('data/input.txt', data, function(err) {
-        if (err) throw err;
+    var newFriends = data.toString('utf8', 0).split(','),
+        newArray = [];
+    newFriends.forEach(function(name) {
+        newArray.push(name.trim());
+    });
 
-        readContent('input.txt', function(err, content) {
-            var allEmployees = content.split('\n');
-
-            allEmployees.splice(-1, 1);
-            generateSummary(groupProcessor.makeGroups(allEmployees));
-       			process.exit()
+    newArray.forEach(function(name) {
+        fs.appendFile('data/input.txt', name, function(err) {
+            if (err) throw err;
         });
+        fs.appendFile('data/input.txt', '\n', function(err) {
+            if (err) throw err;
+        });
+    })
+
+    readContent('input.txt', function(err, content) {
+        var allEmployees = content.split('\n');
+
+        allEmployees.splice(-1, 1);
+        generateSummary(groupProcessor.makeGroups(allEmployees));
+        process.exit()
     });
 });
 
