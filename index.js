@@ -17,6 +17,9 @@ console.log(
     )
 );
 
+/*
+    Logic to interpret the response from the terminal
+*/
 process.stdin.on('data', function(data) {
     fs.appendFile('data/input.txt', data, function(err) {
         if (err) throw err;
@@ -31,6 +34,9 @@ process.stdin.on('data', function(data) {
     });
 });
 
+/*
+    Generate a template to display groups
+*/
 function generateSummary(groups) {
     groups.forEach(function(group, index) {
         process.stdout.write(`Group ${index + 1}` + '\n');
@@ -42,6 +48,9 @@ function generateSummary(groups) {
     });
 }
 
+/*
+    Reads contents from input.txt file
+*/
 function readContent(fileName, callback) {
     fs.readFile('data/input.txt', 'utf8', function(err, content) {
         if (err) return console.log(err);
@@ -49,6 +58,9 @@ function readContent(fileName, callback) {
     });
 }
 
+/*
+    Displays directions to the terminal
+*/
 function beginProgram(i) {
     process.stdout.write(`Please enter the name of your new friend!\n`);
     process.stdout.write("   >   ");
