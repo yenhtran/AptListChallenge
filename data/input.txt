@@ -3,6 +3,3 @@ Dopey
 Grumpy
 Sneezy
 Bashful
-Bambi
-Larry
-Sarah
